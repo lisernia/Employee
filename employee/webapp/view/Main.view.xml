@@ -1,0 +1,37 @@
+<mvc:View controllerName="employee.controller.Main" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true" 
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:f="sap.f">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+                <Page id="_IDGenPage1" showHeader="false">
+                    <content>
+                       <f:FlexibleColumnLayout id="fcl" backgroundDesign="Solid" layout="{jsonLayout>/ActiveKey}">
+                            <f:beginColumnPages>
+                                <mvc:XMLView id="masterEmployeeView" viewName="employee.view.MasterEmployee"></mvc:XMLView>
+                            </f:beginColumnPages>
+                            <f:midColumnPages>
+                                <mvc:XMLView id="detailEmployeeView" viewName="employee.view.EmployeeDetails"></mvc:XMLView>
+                            </f:midColumnPages>
+                            <f:endColumnPages>
+                                <Page id="_IDGenPage2">
+                                </Page>
+                            </f:endColumnPages>
+                       </f:FlexibleColumnLayout> 
+                    </content>
+                    <footer>
+                        <Toolbar id="_IDGenToolbar14">
+                            <Label id="_IDGenLabel14" text="{i18n>layout}" class="sapUiSmallMargin"></Label>
+                            <Select id="_IDGenSelect14" items="{jsonLayout>/Layout}" selectedKey="{jsonLayout>/ActiveKey}">
+                                <core:Item id="_IDGenItem14" key="{jsonLayout>Key}" text="{jsonLayout>Text}"></core:Item>
+                            </Select>
+                        </Toolbar>
+                    </footer>
+                </Page>
+            </pages>
+		</App>
+	</Shell>
+</mvc:View>
