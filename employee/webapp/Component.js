@@ -5,6 +5,8 @@ sap.ui.define([
     ],
     function (UIComponent, Device, models) {
         "use strict";
+        jQuery.sap.includeScript("https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.js");
+
 
         return UIComponent.extend("employee.Component", {
             metadata: {
