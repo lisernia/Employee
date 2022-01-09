@@ -49,6 +49,14 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+
+    "rootView": {
+        "viewName": "employee.view.App",
+        "type": "XML",
+        "async": true,
+        "id": "app"
+    },
+
     "dependencies": {
       "minUI5Version": "1.97.0",
       "libs": {
@@ -99,49 +107,47 @@
         }
       ]
     },
+     
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "employee.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        {
-          "name": "RouteMain",
-          "pattern": "RouteMain",
-          "target": [
-            "TargetMain"
-          ]
-        }
-      ],
-      "targets": {
-        "TargetMain": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
-        },
-
-        "TargetMasterEmployee": {
+        "config": {
+            "routerClass": "sap.m.routing.Router",
             "viewType": "XML",
-            "transition": "slide",
-            "clearControlAggregation": false,
-            "viewId": "MasterEmployee",
-            "viewName": "MasterEmployee"
-          }
-
-      }
-    },
-    "rootView": {
-      "viewName": "employee.view.Main",
-      "type": "XML",
-      "async": true,
-      "id": "Main"
+            "async": true,
+            "viewPath": "employee.view",
+            "controlAggregation": "pages",
+            "controlId": "app",
+            "clearControlAggregation": false
+        },
+        "routes": [
+            {
+                "name": "RouteMain",
+                "pattern": "",
+                "target": [
+                    "TargetMain"
+                ]
+            },
+            {
+                "name": "RouteOrderDetails",
+                "pattern": "OrderDetails/{OrderID}",
+                "target": [
+                    "TargetOrderDetails"
+                ]
+            }
+        ],
+        "targets": {
+            "TargetMain": {
+                "viewType": "XML",
+                "transition": "slide",
+                "clearControlAggregation": false,
+                "viewId": "Main",
+                "viewName": "Main"
+            },
+            "TargetOrderDetails": {
+                "viewType": "XML",
+                "viewName": "OrderDetails",
+                "viewId": "OrderDetails"
+            }
+        }
     }
-  }
+}
 }
