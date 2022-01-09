@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "employee/model/formatter"
-], function (Controller, formatter) {
+    "employee/model/formatter",
+    "sap/m/MessageBox"
+], function (Controller, formatter , MessageBox) {
 
     function onInit() {
         this._bus = sap.ui.getCore().getEventBus();
@@ -14,7 +15,7 @@ sap.ui.define([
         var incidenceModel = this.getView().getModel("incidenceModel");
         var odata = incidenceModel.getData();
         var index = odata.length;
-        odata.push({ index: index + 1, _ValidateDate: false });
+        odata.push({ index: index + 1, _ValidateDate: false , EnabledSave:false});
         incidenceModel.refresh();
         newIncidence.bindElement("incidenceModel>/" + index);
         tableIncidence.addContent(newIncidence);
@@ -29,10 +30,19 @@ sap.ui.define([
     function onDeleteIncidence(oEvent) {
 
         var contexjObj = oEvent.getSource().getBindingContext("incidenceModel").getObject();
-        this._bus.publish("incidence", "onDeleteIncidence", {
-            IncidenceId: contexjObj.IncidenceId,
-            SapId: contexjObj.SapId,
-            EmployeeId: contexjObj.EmployeeId
+
+        MessageBox.confirm(this.getView().getModel("i18n").getResourceBundle().getText("confirmDeleteIncidence"), {
+            onClose: function (oAction) {
+
+                if (oAction === "OK") {
+                    this._bus.publish("incidence", "onDeleteIncidence", {
+                        IncidenceId: contexjObj.IncidenceId,
+                        SapId: contexjObj.SapId,
+                        EmployeeId: contexjObj.EmployeeId
+                    });
+                }
+                
+            }.bind(this)
         });
 
     };
@@ -53,6 +63,12 @@ sap.ui.define([
 
         };
 
+        if (oEvent.getSource().isValidValue() && contextObj.Reason) {
+            contextObj.EnabledSave = true;
+        } else {
+            contextObj.EnabledSave = false;
+        };
+
         context.getModel().refresh();
 
 
@@ -71,12 +87,28 @@ sap.ui.define([
             contextObj.ReasonState = "Error";
         };
 
+        if (contextObj._ValidateDate && oEvent.getSource().getValue()) {
+            contextObj.EnabledSave = true;
+        } else {
+            contextObj.EnabledSave = false;
+        };
+
+        context.getModel().refresh();
     };
 
     function updateIncidenceType(oEvent) {
         var context = oEvent.getSource().getBindingContext("incidenceModel");
         var contextObj = context.getObject();
+        
+
+        if (contextObj._ValidateDate && contextObj.Reason) {
+            contextObj.EnabledSave = true;
+        } else {
+            contextObj.EnabledSave = false;
+        };
+
         contextObj.TypeX = true;
+        context.getModel().refresh();
     };
 
 
