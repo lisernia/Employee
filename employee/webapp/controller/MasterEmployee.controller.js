@@ -1,15 +1,15 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "employee/controller/Base.controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller , Filter, FilterOperator) {
+    function (Base, Filter, FilterOperator) {
         "use strict";
 
-        return Controller.extend("employee.controller.MasterEmployee", {
+        return Base.extend("employee.controller.MasterEmployee", {
             onInit: function () {
                this._bus = sap.ui.getCore().getEventBus();
 
@@ -113,13 +113,13 @@ sap.ui.define([
                         this._bus.publish("flexible", "showEmployee", path);
                     },
 
-                     toOrderDetails: function(oEvent) {
+               /*      toOrderDetails: function(oEvent) {
                         var orderID = oEvent.getSource().getBindingContext("odataNorthwind").getObject().OrderID;
                         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                         oRouter.navTo("RouteOrderDetails", {
                             OrderID : orderID
                         });
-                    }
+                    }*/
 
             
                 });  

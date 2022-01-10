@@ -1,8 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "employee/controller/Base.controller",
     "employee/model/formatter",
     "sap/m/MessageBox"
-], function (Controller, formatter , MessageBox) {
+], function (Base, formatter , MessageBox) {
 
     function onInit() {
         this._bus = sap.ui.getCore().getEventBus();
@@ -112,14 +112,14 @@ sap.ui.define([
     };
 
 
-    function toOrderDetails(oEvent) {
+    /*function toOrderDetails(oEvent) {
         var orderID = oEvent.getSource().getBindingContext("odataNorthwind").getObject().OrderID;
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.navTo("RouteOrderDetails", {
             OrderID : orderID
         });
-    };
-    var EmployeeDetails = Controller.extend("employee.controller.EmployeeDetails", {});
+    };*/
+    var EmployeeDetails = Base.extend("employee.controller.EmployeeDetails", {});
 
     EmployeeDetails.prototype.onInit = onInit;
     EmployeeDetails.prototype.onCreateIncidence = onCreateIncidence;
@@ -129,7 +129,7 @@ sap.ui.define([
     EmployeeDetails.prototype.updateIncidenceCreationDate = updateIncidenceCreationDate;
     EmployeeDetails.prototype.updateIncidenceReason = updateIncidenceReason;
     EmployeeDetails.prototype.updateIncidenceType = updateIncidenceType;
-    EmployeeDetails.prototype.toOrderDetails = toOrderDetails;
+    //EmployeeDetails.prototype.toOrderDetails = toOrderDetails;
 
     return EmployeeDetails;
 }); 
