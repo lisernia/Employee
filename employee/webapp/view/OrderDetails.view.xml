@@ -58,6 +58,17 @@
                     </FlexBox>
                     
                 </l:Grid>
+                   <UploadCollection id="uploadCollection"
+                                  maximumFilenameLength="55"
+                                  maximumFileSize="10"
+                                  multiple="true"
+                                  sameFilenameAllowed="true"
+                                  instantUpload="true"
+                                  uploadUrl="/sap/opu/odata/sap/YSAPUI5_SRV_01/FilesSet"
+                                  change="onFileChange"
+                                  uploadComplete="onFileUploadComplete"
+                                  beforeUploadStarts="onFileBeforeUpload"
+                                  fileDeleted="onFileDeleted"/>
             </Panel>
 
              <Panel id="_IDGenPanel2" headerText="{i18n>orderProducts}">
@@ -66,5 +77,13 @@
 
             
         </content>
+
+        <footer>
+            <Toolbar id="_IDGenToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1"></ToolbarSpacer>
+                <Button id="_IDGenButton3" text="{i18n>saveSignature}" press="onSaveSignature"></Button>
+            </Toolbar>
+        </footer>
+        
     </Page>
 </mvc:View>
