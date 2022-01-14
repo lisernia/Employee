@@ -1,0 +1,39 @@
+<mvc:View
+    controllerName="employee.controller.MasterEmployee"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    
+    xmlns:core="sap.ui.core">
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" >
+                    <content>
+
+                        <HBox id="_IDGenHBox1">
+                            <Label id="labelEmployee" labelFor="inputEmployee"  text="{i18n>labelEmployee}" class="sapUiSmallMargin"/> 
+                            <Input id= "inputEmployee" value="{JsonCountries>/EmployeeId}" maxLength="10" width="200px" class="sapUiSmallMarginEnd"  /> 
+                      
+
+                          
+                            <Label id="labelPaises" labelFor="inputPaises"  text="{i18n>labelPaises}" class="sapUiSmallMargin" visible="true"/> 
+
+                                <Select id="inputPaises" selectedKey="{JsonCountries>/CountryKey}"  items="{JsonCountries>/ListCountry}" 
+                                forceSelection="false" visible="true"  >
+                                <items>
+                                <core:Item id="_IDGenItem1" key="{JsonCountries>key}" text="{JsonCountries>text}"/>
+                                </items>
+                                </Select>
+                                <Button id="btnFilter" text="{btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
+                                <Button id="btnClearFilter" text="{btnClearFilter}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd"/>
+                         </HBox>
+                        <HBox id="_IDGenHBox2"> 
+                                <core:Fragment fragmentName="employee.fragment.TableEmployee" type="XML"/>
+                        </HBox>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
