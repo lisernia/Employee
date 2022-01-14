@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/Control"
 ], function (Control) {
 
-    return Control.extend("logaligroup.Employees.controller.Signature", {
+    return Control.extend("employees.controller.Signature", {
 
         metadata: {
             properties: {

@@ -1,29 +1,29 @@
 {
-  "welcomeFile": "/index.html",
-  "authenticationMethod": "route",
- 
-    "routes": [
-        {
-          "authenticationType": "none",
-          "csrfProtection": false,
-          "source": "^/Northwind/(.*)$",
-          "destination": "Northwind",
-          "target": "$1"
-        },
-        {
-          "authenticationType": "none",
-          "csrfProtection": false,
-          "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
-          "destination": "ERP"
-        },
-        {
-          "source": "^(.*)$",
-          "target": "$1",
-          "service": "html5-apps-repo-rt",
-          "authenticationType": "xsuaa"
-        }
-      ] 
-    
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
    
-  
-}
+      "routes": [
+          {
+            "authenticationType": "none",
+            "csrfProtection": false,
+            "source": "^/Northwind/(.*)$",
+            "destination": "Northwind",
+            "target": "$1"
+          },
+          {
+            "authenticationType": "none",
+            "csrfProtection": false,
+            "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
+            "destination": "ERP"
+          },
+          {
+            "source": "^(.*)$",
+            "target": "$1",
+            "service": "html5-apps-repo-rt",
+            "authenticationType": "xsuaa"
+          }
+        ] 
+      
+     
+    
+  }

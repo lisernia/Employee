@@ -67,7 +67,7 @@ sap.ui.define([
             });
         };
 
-        return Controller.extend("logaligroup.Employees.controller.OrderDetails", {
+        return Controller.extend("employees.controller.OrderDetails", {
 
             onInit: function () {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
